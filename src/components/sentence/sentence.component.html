@@ -1,0 +1,6 @@
+
+<div class="row" [ngClass]="sentence.isPositive ? 'sentence-positive' : 'sentence-negative'">
+  <app-word class="col-1 alert" *ngFor="let word of sentence.words" [word]="word" [ngClass]="word.isPositive ? 'alert-success' : 'alert-danger'"></app-word>
+</div>
+
+<hr>

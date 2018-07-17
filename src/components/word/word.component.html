@@ -1,0 +1,42 @@
+<h5 class="text-center" [ngClass]="{'has-links': word.links && word.links.length > 0}" 
+  [ngbPopover]="linksPopover" [disablePopover]="!word.links || word.links.length == 0" #p="ngbPopover" (document:click)="p.close()" (click)="$event.stopPropagation()">
+  {{word.content}}
+</h5>
+<h6 class="text-info text-center">
+  <span>
+    <i class="fa fa-info-circle text-info" (click)="openDetails(content)" style="cursor:pointer"></i> {{word.partOfSpeech}}</span>
+</h6>
+
+<ng-template #linksPopover>
+  <div *ngFor="let link of word.links">
+    <a href="{{link.url}}" target="_blank"><h5>{{link.type}}</h5></a>
+  </div>
+</ng-template>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{word.content.toUpperCase()}}
+      <span class="font-weight-light">(<span *ngFor="let relatedWord of word.relatedWords; last as isLast">{{relatedWord}}<span *ngIf="!isLast">, </span></span>)</span>
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="d()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h5 class="text-info" style="text-decoration:underline">{{word.description}}</h5>
+    <h6 *ngFor="let example of word.examples">{{example}}</h6>
+    <br>
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let pointer of word.pointers">
+          <th scope="row">{{pointer.type}}</th>
+          <td><span *ngFor="let pointerWord of pointer.words; last as isLast">{{pointerWord}}<span *ngIf="!isLast">, </span></span></td>
+          <td class="text-info">{{pointer.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c()">Close</button>
+  </div>
+</ng-template>

@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~font-awesome/css/font-awesome.css";
+
+.btn {
+    border-radius: 0px;
+    margin-left: 5px;
+}
+
+.form-control {
+    border-radius: 0px;
+}
+
+.alert {
+    padding: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
+
+.col-1, .col-12 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.modal-body {
+    padding-top: 0px;
+}
+
+.sentence-negative {
+    border-left: 4px red solid; 
+    margin-top:5px;
+}
+
+.sentence-positive {
+    border-left: 4px green solid; 
+    margin-top:5px;
+}
+
+.has-links {
+    font-weight:bold; 
+    text-decoration:underline;
+    color: #007bff;
+    cursor: pointer;
+}
